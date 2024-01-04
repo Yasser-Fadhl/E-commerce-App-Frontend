@@ -1,4 +1,4 @@
-import Navbar from "./layouts/navbar/Navbar";
+import Navbar from "./components/navbar/Navbar";
 import ProductsView from "./layouts/ProductsView";
 import SignInView from "./layouts/SignInView";
 import SignUpView from "./layouts/SignUpView";
