@@ -49,7 +49,7 @@ const Pagination = () => {
           Previous
         </button>
       )}
-      <div className="flex items-center xs:gap-0 sm:gap-2">
+      <div className="flex max-sm:hidden items-center xs:gap-0 sm:gap-2">
         {pagesGen(pages).length > 1 &&
           pagesGen(pages).map((page, index) => (
             <button
