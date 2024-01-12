@@ -19,7 +19,6 @@ export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
   async (params) => {
     const query = `limit=${params.limit}&page=${params.page}&keyword=${params.keyword}`;
-    console.log(query);
     const response = await axios.get(
       `http://localhost:4000/api/v1/products?${query}`
     );

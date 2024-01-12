@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { registerUser, clearErrors } from "../slicers/authSlice";
 import { useNavigate } from "react-router-dom";
 import { useAlert } from "react-alert";
-import { SignUpValidators } from "../utils/SignUpValidators";
 import { isValidEmail, LengthValidator } from "../utils/validators";
 const SignUpView = () => {
   const alert = useAlert();

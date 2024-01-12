@@ -16,7 +16,7 @@ const Pagination = () => {
   };
 
   const dispatch = useDispatch();
-  const { limit, page, keyword, pages } = useSelector(
+  const { limit, page, keyword, pages, loading } = useSelector(
     (state) => state.products
   );
   const Page = page;

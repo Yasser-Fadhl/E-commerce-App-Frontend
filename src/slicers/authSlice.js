@@ -16,7 +16,6 @@ export const loginUser = createAsyncThunk(
   "auth/loginUser",
   async (user, { rejectWithValue }) => {
     try {
-      //  response =
       const response = await axios.post(
         "http://localhost:4000/api/v1/login",
         { email: user.email, password: user.password },
@@ -24,11 +23,6 @@ export const loginUser = createAsyncThunk(
           headers: { "Content-Type": "application/json" },
           withCredentials: true,
         }
-
-        // {
-        //   credentials: "include",
-        //   mode: "cors",
-        // }e
       );
       return response.data;
     } catch (error) {
@@ -44,11 +38,6 @@ export const loginUser = createAsyncThunk(
 export const registerUser = createAsyncThunk(
   "auth/registerUser",
   async (user, { rejectWithValue }) => {
-    var object = {};
-    user.forEach((value, key) => (object[key] = value));
-
-    console.log({ object });
-    const { name, email, password } = object;
     try {
       const { data } = await axios.post(
         "http://localhost:4000/api/v1/register",
@@ -76,7 +65,7 @@ export const loadUser = createAsyncThunk(
       const response = await axios.get("http://localhost:4000/api/v1/me", {
         withCredentials: true,
       });
-      console.log(thunkAPI);
+
       return response.data;
     } catch (error) {
       if (error.response && error.response.data.Message) {
