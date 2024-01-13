@@ -97,6 +97,21 @@ const Navbar = () => {
         )}
         {isAuthenticated && (
           <div className="flex ms:justify-end items-center xs:gap-2 md:gap-4">
+            <Link to="/cart" className="text-white relative ">
+              <div className="top-0 absolute left-5 z-50">
+                <p className="flex h-2 w-2 items-center justify-center rounded-full bg-red-500 p-2  text-xs text-white">
+                  {cartItems.length}
+                </p>
+              </div>
+              <Icon
+                path={mdiCart}
+                size={1.3}
+                horizontal
+                vertical
+                rotate={180}
+                // className="z-10"
+              />
+            </Link>
             <h3 className="text-lg text-white">{user && user.name}</h3>
             <div className="relative">
               <div>
