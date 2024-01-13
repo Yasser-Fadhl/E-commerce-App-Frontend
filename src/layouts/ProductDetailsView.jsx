@@ -4,9 +4,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { useAlert } from "react-alert";
 import { Rating } from "../utils/rating";
 import Carousel from "../utils/Carousel";
-import { getProduct, clearErrors } from "../slicers/productDetailsSlice";
+import { getProduct } from "../slicers/productDetailsSlice";
 import { addToCart } from "../slicers/cartSlice";
-import Loading from "../components/Loading";
+import { Loading } from "../components";
 import store from "../store";
 
 const ProductDetailsView = () => {

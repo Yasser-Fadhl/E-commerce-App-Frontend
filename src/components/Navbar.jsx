@@ -4,12 +4,12 @@ import { FaSignInAlt, FaUser } from "react-icons/fa";
 import Icon from "@mdi/react";
 import { mdiMagnify, mdiCart } from "@mdi/js";
 import { useSelector, useDispatch } from "react-redux";
-import { logoutUser } from "../../slicers/authSlice";
+import { logoutUser } from "../slicers/authSlice";
 import {
   fetchProducts,
   setSearchTerm,
   setPage,
-} from "../../slicers/productsSlice";
+} from "../slicers/productsSlice";
 import TsunamiIcon from "@mui/icons-material/Tsunami";
 const Navbar = () => {
   const dispatch = useDispatch();

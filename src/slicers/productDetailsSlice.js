@@ -1,5 +1,6 @@
 // src/redux/productsSlice.js
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { API } from "../Constants";
 import axios from "axios";
 // Define an initial state for the slice
 const initialState = {
@@ -12,9 +13,7 @@ export const getProduct = createAsyncThunk(
   "products/getProduct",
   async (id, thunkAPI) => {
     try {
-      const { data } = await axios.get(
-        `http://localhost:4000/api/v1/products/${id}`
-      );
+      const { data } = await axios.get(`${API}/products/${id}`);
       return data;
     } catch (error) {
       console.log(error);

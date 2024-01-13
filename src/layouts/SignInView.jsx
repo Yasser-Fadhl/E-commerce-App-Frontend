@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import { useAlert } from "react-alert";
 import { isValidEmail, LengthValidator } from "../utils/validators";
 const SignInView = () => {
-  const alert = useAlert();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({
@@ -33,7 +32,7 @@ const SignInView = () => {
       setErrors((errors) => {
         return { ...errors, inValidUser: error };
       });
-      // alert.error(error);
+
       dispatch(clearErrors());
     }
   }, [dispatch, status, isAuthenticated, error]);

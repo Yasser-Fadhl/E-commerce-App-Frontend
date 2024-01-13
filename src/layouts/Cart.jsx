@@ -4,6 +4,7 @@ import Icon from "@mdi/react";
 import { addToCart, removeCartItem } from "../slicers/cartSlice";
 import { useDispatch } from "react-redux";
 import store from "../store";
+import { Link } from "react-router-dom";
 const Cart = () => {
   const dispatch = useDispatch();
   const { cartItems } = useSelector((state) => state.cart);
@@ -56,8 +57,10 @@ const Cart = () => {
       <span className="flex xs:my-5 sm:my-14 ml-10">
         {cartItems.length > 0 ? (
           <>
-            <h1 className="xs:text-lg sm:text-4xl">Your Cart: </h1>
-            <h1 className=" font-bold xs:text-lg sm:text-4xl">
+            <h1 className="xs:text-lg sm:text-4xl text-gray-700 font-semibold">
+              Cart:
+            </h1>
+            <h1 className=" font-bold xs:text-lg sm:text-4xl text-green-900">
               &nbsp;{cartItems.length} Items
             </h1>
           </>
@@ -139,18 +142,19 @@ const Cart = () => {
               <span className="flex justify-between my-2">
                 <p>Est. total:</p>
                 <p className="font-semibold">
+                  $
                   {cartItems
                     .reduce((sum, item) => sum + item.quantity * item.price, 0)
                     .toFixed(2)}
                 </p>
               </span>
               <hr />
-              <button
-                type="button"
-                className="bg-green-900 hover:bg-gray-200 hover:text-green-900 font-semibold border border-green-900 text-white rounded-full px-4 py-2 my-4"
+              <Link
+                to="/shipping"
+                className="bg-green-900 text-center hover:bg-gray-200 hover:text-green-900 font-semibold border border-green-900 text-white rounded-full px-4 py-2 my-4"
               >
                 Checkout
-              </button>
+              </Link>
             </div>
           </div>
         )}

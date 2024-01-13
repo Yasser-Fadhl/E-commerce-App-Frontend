@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Rating } from "../../utils/rating";
+import { Rating } from "../utils/rating";
 const ProductCard = ({ id, image, title, price, rating }) => {
   return (
     <div className="flex flex-col w-96 justify-around shadow-2xl shadow-black rounded-md px-4 py-6 m-6">

@@ -1,13 +1,17 @@
-import Navbar from "./components/navbar/Navbar";
-import ProductsView from "./layouts/ProductsView";
-import SignInView from "./layouts/SignInView";
-import SignUpView from "./layouts/SignUpView";
-import Cart from "./layouts/Cart";
-import ProductDetailsView from "./layouts/ProductDetailsView";
+import Navbar from "./components/Navbar";
+import {
+  Cart,
+  ProductDetailsView,
+  ProductsView,
+  SignInView,
+  SignUpView,
+  Shipping,
+} from "./layouts";
+
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { clearErrors, loadUser } from "./slicers/authSlice";
+import { loadUser } from "./slicers/authSlice";
 import { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -22,6 +26,7 @@ function App() {
         <Route path="/signin" element={<SignInView />} />
         <Route path="/signup" element={<SignUpView />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/shipping" element={<Shipping />} />
       </Routes>
     </Router>
   );

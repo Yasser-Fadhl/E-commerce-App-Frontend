@@ -1,7 +1,5 @@
-import ProductCard from "../components/productCard/productCard";
-import Pagination from "../components/Pagination";
 import { useSelector } from "react-redux";
-import Loading from "../components/Loading";
+import { Pagination, ProductCard, Loading } from "../components";
 
 const ProductsView = () => {
   const { products, status } = useSelector((state) => state.products);
