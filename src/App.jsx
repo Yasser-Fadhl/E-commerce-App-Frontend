@@ -7,7 +7,7 @@ import {
   SignUpView,
   Shipping,
 } from "./layouts";
-
+import PrivateRoute from "./routes/PrivateRoute";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { loadUser } from "./slicers/authSlice";
 import { useEffect } from "react";
@@ -26,7 +26,9 @@ function App() {
         <Route path="/signin" element={<SignInView />} />
         <Route path="/signup" element={<SignUpView />} />
         <Route path="/cart" element={<Cart />} />
-        <Route path="/shipping" element={<Shipping />} />
+        <Route path="/shipjping" element={<PrivateRoute />} exact>
+          <Route element={<Shipping />} />
+        </Route>
       </Routes>
     </Router>
   );

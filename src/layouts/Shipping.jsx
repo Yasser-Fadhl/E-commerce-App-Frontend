@@ -2,8 +2,11 @@ import { countries } from "countries-list";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-
+import { saveShippingInfo } from "../slicers/cartSlice";
+import { useDispatch } from "react-redux";
 const Shipping = () => {
+  console.log("DKMS");
+  const dispatch = useDispatch();
   const validationSchema = yup.object().shape({
     address: yup.string().required("Missing address"),
     city: yup.string().required("Missing City"),
@@ -29,7 +32,8 @@ const Shipping = () => {
   console.log({ errors });
   const countriesList = Object.values(countries);
   const onSubmit = (data) => {
-    // console.log("data", data);
+    dispatch(saveShippingInfo(data));
+    console.log("data", data);
     console.log({ errors });
   };
   return (

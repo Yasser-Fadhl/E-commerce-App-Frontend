@@ -6,6 +6,9 @@ const initialState = {
   cartItems: localStorage.getItem("cartItems")
     ? JSON.parse(localStorage.getItem("cartItems"))
     : [],
+  shippingInfo: localStorage.getItem("shippingInfo")
+    ? JSON.parse(localStorage.getItem("shippingInfo"))
+    : {},
 };
 // Define an async thunk for fetching products from the API
 // export const addToCart = createAsyncThunk(
@@ -67,9 +70,16 @@ const cartItemsSlice = createSlice({
         error: null,
       };
     },
+    saveShippingInfo: (state, action) => {
+      localStorage.setItem("shippingInfo", JSON.stringify(action.payload));
+      return {
+        ...state,
+        shippingInfo: action.payload,
+      };
+    },
   },
   // extraReducers: {},
 });
-export const { clearErrors, addToCart, removeCartItem } =
+export const { clearErrors, addToCart, removeCartItem, saveShippingInfo } =
   cartItemsSlice.actions;
 export default cartItemsSlice.reducer;
