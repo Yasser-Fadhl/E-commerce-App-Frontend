@@ -33,7 +33,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className=" flex justify-around sm:items-center xs:flex-col sm:flex-row xs:h-40 sm:h-28 sticky bg-black px-4 py-2">
+      <div className=" flex justify-around md:items-center xs:flex-col md:flex-row xs:h-40 md:h-28 sticky bg-black px-4 py-2">
         <Link to="/">
           <div className="flex items-center">
             <TsunamiIcon className="text-white  mr-2" fontSize="large" />
@@ -43,7 +43,7 @@ const Navbar = () => {
           </div>
         </Link>
 
-        <div className=" xs:w-1/4 md:w-1/2 justify-center sm:mr-1 md:mr-0  xs:hidden sm:flex h-10">
+        <div className=" xs:w-1/4 md:w-1/2 justify-center sm:mr-1 md:mr-0  xs:hidden md:flex h-10">
           <input
             type="text"
             value={keyword}
@@ -109,7 +109,6 @@ const Navbar = () => {
                 horizontal
                 vertical
                 rotate={180}
-                // className="z-10"
               />
             </Link>
             <h3 className="text-lg text-white">{user && user.name}</h3>
@@ -189,7 +188,7 @@ const Navbar = () => {
             </div> */}
           </div>
         )}
-        <div className="  xs:flex xs:justify-start ms:justify-center sm:hidden">
+        <div className="  xs:flex xs:justify-start ms:justify-center md:hidden">
           <input
             type="text"
             placeholder="Find your products"

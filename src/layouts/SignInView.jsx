@@ -81,7 +81,7 @@ const SignInView = () => {
               placeholder="Email"
               onChange={onChange}
             />
-            <p className="text-red-700 text-sm">
+            <p className="text-red-700 xs:text-xs sm:text-sm">
               {errors.email && errors.email}
             </p>
           </div>
@@ -95,7 +95,7 @@ const SignInView = () => {
               placeholder="Password"
               onChange={onChange}
             />
-            <p className="text-red-700 text-sm">
+            <p className="text-red-700 xs:text-xs sm:text-sm">
               {errors.password && errors.password}
             </p>
           </div>

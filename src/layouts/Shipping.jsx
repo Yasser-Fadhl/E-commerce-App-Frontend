@@ -4,16 +4,21 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { saveShippingInfo } from "../slicers/cartSlice";
 import { useDispatch } from "react-redux";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 const Shipping = () => {
-  console.log("DKMS");
+  const phoneRegEx = /^(\+|00)(\d{1,3})(\d{9})$/;
   const dispatch = useDispatch();
+  const Navigate = useNavigate();
   const validationSchema = yup.object().shape({
     address: yup.string().required("Missing address"),
     city: yup.string().required("Missing City"),
-    phone: yup.string().required("Missing phone number").min(12),
-    // postalCode: yup.string(),
+    phone: yup
+      .string()
+      .matches(phoneRegEx, "Phone number is not valid  (key + 9 digits)"),
   });
-
+  const [selectedPage, setSelectedPage] = useState("Shipping");
+  const selectedClass = " border-b-4 rounded-sm border-green-800 ";
   const {
     register,
     handleSubmit,
@@ -33,11 +38,18 @@ const Shipping = () => {
   const countriesList = Object.values(countries);
   const onSubmit = (data) => {
     dispatch(saveShippingInfo(data));
+    Navigate("/order/confirm");
     console.log("data", data);
     console.log({ errors });
   };
   return (
     <>
+      <span className="flex justify-around px-8 gap-2 xs:w-full ms:w-10/12 sm:w-1/2 xl:w-1/3 mx-auto mt-2 text-lg text-gray-500 font-semibold ">
+        <div className={selectedClass}>Shipping</div>
+        <div>Confirm Order</div>
+        <div>Payment</div>
+      </span>
+
       <form
         className="flex flex-col xs:w-full ms:w-10/12 sm:w-1/2 xl:w-1/3 mx-auto mt-10 p-4 shadow-2xl  gap-2 rounded-lg"
         onSubmit={handleSubmit(onSubmit)}
