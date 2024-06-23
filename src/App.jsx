@@ -7,18 +7,30 @@ import {
   SignUpView,
   Shipping,
   ConfirmOrder,
-  PaymentInfo,
+  Payment,
 } from "./layouts";
 import PrivateRoute from "./routes/PrivateRoute";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { loadUser } from "./slicers/authSlice";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-
+import axios from "axios";
+import { API } from "./Constants";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
 function App() {
   const dispatch = useDispatch();
+  const [stripeApiKey, setStripeApiKey] = useState("");
   useEffect(() => {
     dispatch(loadUser());
+    async function getStripeApiKey() {
+      const { data } = await axios.get(API + "/stripeapikey", {
+        withCredentials: true,
+      });
+      setStripeApiKey(data.stripe_api_key);
+      console.log(stripeApiKey);
+    }
+    getStripeApiKey();
   }, []);
   return (
     <Router>
@@ -33,7 +45,22 @@ function App() {
           <Route path="/shipping" element={<Shipping />} />
         </Route>
         <Route path="/order/confirm" element={<ConfirmOrder />} />
-        <Route path="/payment" element={<PaymentInfo />} />
+
+        <Route path="/" element={<PrivateRoute />} exact>
+          {stripeApiKey && (
+            <Route
+              path="/payment"
+              element={
+                <Elements stripe={loadStripe(stripeApiKey)}>
+                  <Payment />
+                </Elements>
+              }
+            />
+          )}
+          {/* <Elements stripe={loadStripe(stripeApiKey)}>
+            <Route path="/payment" element={<Payment />} />
+          </Elements> */}
+        </Route>
       </Routes>
     </Router>
   );

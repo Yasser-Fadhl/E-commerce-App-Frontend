@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { saveShippingInfo } from "../slicers/cartSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 const Shipping = () => {
@@ -18,6 +18,9 @@ const Shipping = () => {
       .matches(phoneRegEx, "Phone number is not valid  (key + 9 digits)"),
   });
   const [selectedPage, setSelectedPage] = useState("Shipping");
+  const { address, city, phone } = useSelector(
+    (state) => state.cart.shippingInfo
+  );
   const selectedClass = " border-b-4 rounded-sm border-green-800 ";
   const {
     register,
@@ -27,9 +30,9 @@ const Shipping = () => {
   } = useForm({
     resolver: yupResolver(validationSchema),
     defaultValues: {
-      address: "",
-      city: "",
-      phone: "",
+      address,
+      city,
+      phone,
       postalCode: "0000",
       country: "Sudan",
     },

@@ -28,7 +28,10 @@ const ConfirmOrder = () => {
             </span>
           </div>
           <h1 className="text-2xl">Your Cart Items</h1>
-          <div className=" flex flex-col gap-6">
+          <div
+            className=" flex flex-col 
+          "
+          >
             {cartItems.map((item) => (
               <div key={item.product} className="">
                 <hr />
@@ -51,9 +54,9 @@ const ConfirmOrder = () => {
                     {(item.quantity * item.price).toFixed(2)}
                   </span>
                 </div>
-                <hr />
               </div>
             ))}
+            <hr />
           </div>
         </div>
 
